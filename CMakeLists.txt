@@ -3,4 +3,7 @@ project(StormEngine)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_library(StormEngine roll.cpp character/statistics/statistics.cpp character/statistics/statistics.h character/character.cpp character/character.h character/statistics/scar.h character/professions/professions.cpp character/professions/profession_component.h character/professions/profession.h character/professions/ability.h character/character_enums.h)
+add_library(StormEngine roll.cpp characters/statistics/statistics.cpp characters/statistics/statistics.h characters/character.cpp characters/character.h characters/statistics/scar.h characters/professions/professions.cpp characters/professions/profession_component.h characters/professions/profession.h characters/professions/ability.h characters/character_enums.h characters/player.h characters/npc/npc.cpp characters/npc/npc.h ai/ai.h characters/npc/dialogue_component.cpp characters/npc/dialogue_component.h combat/assailable.h)
+add_executable(Test Test.cpp)
+target_link_libraries(Test StormEngine)
+add_dependencies(Test StormEngine)
