@@ -1,7 +1,6 @@
 #ifndef STORMENGINE_STATISTICS_H
 #define STORMENGINE_STATISTICS_H
 
-
 #include <vector>
 #include "../character_enums.h"
 #include "scar.h"

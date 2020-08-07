@@ -3,6 +3,7 @@
 
 #include "../../ai/ai.h"
 #include "dialogue_component.h"
+#include "../../combat/assailable.h"
 
 namespace DawnStorm {
     class NPC : AI, Assailable {

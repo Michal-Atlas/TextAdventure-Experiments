@@ -2,9 +2,10 @@
 #define STORMENGINE_ASSAILABLE_H
 
 #include <utility>
+#include <functional>
 
 #include "../characters/statistics/statistics.h"
-#include "../characters/character.h"
+#include "../characters/size.h"
 
 namespace DawnStorm {
     class Assailable {
@@ -14,7 +15,8 @@ namespace DawnStorm {
         Statistics stats;
         Size size;
 
-        void Attack();
+        std::function<void()> Attack;
+        std::function<void()> Defend;
 
     private:
     };

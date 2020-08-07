@@ -3,18 +3,20 @@
 
 #include <utility>
 
-#include "character.h"
 #include "../combat/assailable.h"
+#include "size.h"
+#include "professions/profession_component.h"
+#include "../items/item.h"
 
 namespace DawnStorm {
-    class Player : public Character, public Assailable {
+    class Player : public Assailable {
     public:
-        Player(std::string name, Statistic stats, Race race, Size size, Profession_Component professions) : Character(
-                std::move(name), stats, race, size), Professions(std::move(professions)) {}
+        Player(Statistics stats, Size size, Profession_Component professions) :
+                Assailable(std::move(stats), size),
+                Professions(std::move(professions)) {}
 
         Profession_Component Professions;
-    private:
-        void Choose_Race(std::string race);
+        std::vector<Item *> Inventory;
     };
 }
 

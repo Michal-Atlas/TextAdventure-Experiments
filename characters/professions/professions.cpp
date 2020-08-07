@@ -17,11 +17,12 @@ namespace DawnStorm {
         abilities.push_back(ability);
     }
 
-    const std::map<Profession_ID,Profession> Professions_Info {
+    const std::map<Profession_ID, Profession> Profession::Professions_Info{
             {Acolyte, Profession{Acolyte,
                                  "Acolyte",
                                  {
                                          amulet_user, battle_caster
-                                 }, {Acolyte}, 0}}
+                                 }, {Acolyte}, 0, {}}
+            }
     };
 }
