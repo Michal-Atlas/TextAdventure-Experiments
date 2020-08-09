@@ -1,30 +1,34 @@
 #include <iostream>
 #include "map.h"
+#include "interactible.h"
 
 namespace DawnStorm {
-    void Map::LookAt(const std::string &input) const {
-        Interactable *inter = InteractableFromString(input);
-        std::cout << std::endl << inter->Description << std::endl;
-
+    Interactable *Map::GetInteractable(const std::string &input) const {
+        return current->GetInteractable(input);
     }
 
-    Interactable *Map::InteractableFromString(const std::string &input) const {
-        Interactable *interactable;
+    Interactable *Room::GetInteractable(const std::string &input) const {
+        /*Interactable *interactable = nullptr;
         int maxConf = 0;
         {
-            for (Interactable &inter : current->interactables) {
+            for (const std::string& interac : interactables) {
+                Interactable *inter = &Interactable::DB[interac];
                 int confidence = 0;
-                for (std::string &key : inter.Keywords) {
+                for (std::string &key : inter->Keywords) {
                     if (input.find(key) != std::string::npos) {
                         confidence++;
                     }
                 }
                 if (confidence > maxConf) {
-                    interactable = &inter;
+                    interactable = inter;
                     maxConf = confidence;
                 }
             }
         }
-        return interactable;
+        return interactable;*/
+    }
+
+    Room *Room::GetRoom(const std::string &id) {
+        //return &Room::DB[id];
     }
 }
