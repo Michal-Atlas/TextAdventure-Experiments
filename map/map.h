@@ -4,35 +4,36 @@
 #include <utility>
 #include <vector>
 #include <string>
-#include "interactable.h"
-#include "../ai/ai.h"
+#include <map>
 
 namespace DawnStorm {
+    class Interactable;
+
     class Room {
     public:
-        Room(std::string desc, std::vector<Interactable> inter) : description(std::move(desc)),
-                                                                  interactables(std::move(inter)) {}
+        static Room *GetRoom(const std::string &id);
+
+        Interactable *GetInteractable(const std::string &input) const;
+
+        Room(std::string desc, std::vector<std::string> inter) : description(std::move(desc)),
+                                                                 interactables(std::move(inter)) {}
 
         void Enter();
 
         std::string description;
-        std::vector<Interactable> interactables;
+        std::vector<std::string> interactables;
+        static std::map<std::string, Room> DB;
     };
 
     class Map {
     public:
-        Map(std::vector<Room> _rooms) : rooms(std::move(_rooms)) { current = &rooms[0]; }
+        Map(std::vector<std::string> _rooms) : rooms(std::move(_rooms)) { current = Room::GetRoom(rooms[0]); }
 
         Room *current;
-
-        void Enter();
-
-        std::vector<Room> rooms;
+        std::vector<std::string> rooms;
         static Map seychia;
 
-        void LookAt(const std::string &input) const;
-
-        Interactable *InteractableFromString(const std::string &input) const;
+        Interactable *GetInteractable(const std::string &input) const;
     };
 }
 
