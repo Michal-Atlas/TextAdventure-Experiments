@@ -1,14 +1,17 @@
 #include <iostream>
 #include "game.h"
+#include "map/interactible.h"
 
 #define Msg_Welcome "Welcome to DawnStorm, for the System manual, please go to https://dawnstorm.michal-atlas.co"
 #define Cursor " > "
 
 namespace DawnStorm {
+    const Map *Game::world = &Map::seychia;
+    Player Game::player = Player{{5, 10, 5}, Normal, {}};
+
     void Game::Run() {
         std::cout << Msg_Welcome << std::endl << std::endl;
         Character_Initialization();
-        world = &Map::seychia;
         bool running = true;
         while (running) {
             std::cout << std::endl << Cursor;
@@ -22,11 +25,12 @@ namespace DawnStorm {
                 case quit:
                     running = false;
                     break;
-                case look:
-                    world->LookAt(input);
-                default:
-                    continue;
-
+                case interact:
+                    Interactable *inter = world->GetInteractable(input);
+                    if (inter != nullptr) {
+                        inter->Interact(this);
+                    }
+                    break;
             }
         }
     }
