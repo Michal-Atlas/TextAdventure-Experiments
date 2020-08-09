@@ -2,9 +2,9 @@
 
 namespace DawnStorm {
     const std::vector<std::pair<Command_ID, std::vector<std::string>>> Command::Keywords = {
-            {move, {"move", "go", "walk"}},
-            {look, {"look", "see"}},
-            {quit, {"quit"}}
+            {move,     {"move", "go", "walk"}},
+            {interact, {"look", "see"}},
+            {quit,     {"quit"}}
     };
 
     Command_ID Command::CommandFromString(std::string input) {

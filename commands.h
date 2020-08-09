@@ -7,11 +7,9 @@
 namespace DawnStorm {
     enum Command_ID {
         move,
-        look,
+        interact,
         talk,
         attack,
-        climb,
-        jump,
         quit,
         invalid
     };
