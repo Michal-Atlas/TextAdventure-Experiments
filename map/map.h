@@ -11,12 +11,12 @@ namespace DawnStorm {
 
     class Room {
     public:
-        static Room *GetRoom(const std::string &id);
-
-        Interactable *GetInteractable(const std::string &input) const;
-
         Room(std::string desc, std::vector<std::string> inter) : description(std::move(desc)),
                                                                  interactables(std::move(inter)) {}
+
+        Room() = default;
+
+        Interactable *GetInteractable(const std::string &input) const;
 
         void Enter();
 
@@ -27,13 +27,10 @@ namespace DawnStorm {
 
     class Map {
     public:
-        Map(std::vector<std::string> _rooms) : rooms(std::move(_rooms)) { current = Room::GetRoom(rooms[0]); }
-
-        Room *current;
+        Map(std::vector<std::string> _rooms) : rooms(std::move(_rooms)) {}
         std::vector<std::string> rooms;
-        static Map seychia;
 
-        Interactable *GetInteractable(const std::string &input) const;
+        static Map seychia;
     };
 }
 

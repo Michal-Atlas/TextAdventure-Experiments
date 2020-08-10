@@ -9,9 +9,8 @@ namespace DawnStorm {
     public:
         static Player player;
         static Map *world;
-
+        static Room *currentRoom;
         static void Character_Initialization();
-
         void Run();
     };
 }

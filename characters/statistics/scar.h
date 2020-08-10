@@ -4,7 +4,6 @@
 
 #include <string>
 #include "../character_enums.h"
-#include "../../commands.h"
 
 namespace DawnStorm {
     class Scar {

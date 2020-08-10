@@ -4,7 +4,6 @@
 #include <utility>
 #include "vector"
 #include "ability.h"
-#include "../../commands.h"
 
 namespace DawnStorm {
     enum Profession_ID {
@@ -24,7 +23,6 @@ namespace DawnStorm {
     };
 
     struct Bonus {
-        Command_ID command;
         std::vector<std::string> keywords;
     };
 

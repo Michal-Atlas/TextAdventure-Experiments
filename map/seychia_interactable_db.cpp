@@ -1,9 +1,10 @@
 #include "interactible.h"
 #include <iostream>
+#include "../game.h"
 
 namespace DawnStorm {
-    std::map<std::string, Interactable> DB = {
-            {"rock", {{"look", "rock"}, [](Game *game) { std::cout << "Rock TEXT" << std::endl; }}}
+    std::map<std::string, Interactable> Interactable::DB = {
+            {"rock", Interactable{{"look", "rock"}, [](Game *) { std::cout << "Rock TEXT" << std::endl; }}}
     };
 }
 

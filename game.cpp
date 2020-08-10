@@ -6,31 +6,27 @@
 #define Cursor " > "
 
 namespace DawnStorm {
-    const Map *Game::world = &Map::seychia;
+    Map *Game::world = nullptr;
     Player Game::player = Player{{5, 10, 5}, Normal, {}};
-
+    Room *Game::currentRoom = nullptr;
     void Game::Run() {
+        world = &Map::seychia;
+        currentRoom = &Room::DB[world->rooms[0]];
         std::cout << Msg_Welcome << std::endl << std::endl;
-        Character_Initialization();
         bool running = true;
         while (running) {
             std::cout << std::endl << Cursor;
             std::string input;
             std::getline(std::cin, input);
-            Command_ID comm = Command::CommandFromString(input);
-            switch (comm) {
-                case invalid:
-                    std::cout << "Unknown Command" << std::endl;
-                    break;
-                case quit:
-                    running = false;
-                    break;
-                case interact:
-                    Interactable *inter = world->GetInteractable(input);
-                    if (inter != nullptr) {
-                        inter->Interact(this);
-                    }
-                    break;
+            if (input.find("quit") != std::string::npos) {
+                running = false;
+            } else {
+                Interactable *inter = currentRoom->GetInteractable(input);
+                if (inter != nullptr) {
+                    inter->Interact(this);
+                } else {
+                    std::cout << "Unknown Command";
+                }
             }
         }
     }

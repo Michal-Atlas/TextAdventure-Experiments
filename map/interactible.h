@@ -2,9 +2,12 @@
 #define STORM_ENGINE_SEYCHIA_INTERACTIBLE_DB_H
 
 #include <functional>
-#include "../game.h"
+#include <vector>
+#include <map>
 
 namespace DawnStorm {
+    class Game;
+
     class Interactable {
     public:
         Interactable(std::vector<std::string> keywords, std::function<void(Game *)> interact) :
