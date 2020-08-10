@@ -1,16 +1,13 @@
-//
-// Created by michal_atlas on 07/08/2020.
-//
-
 #ifndef STORM_ENGINE_ITEM_H
 #define STORM_ENGINE_ITEM_H
 
+namespace DawnStorm {
+    class Item {
 
-class Item {
-
-public:
-    static Item Rock;
-};
-
+    public:
+        static std::map<std::string, Item> DB;
+        const std::string Name;
+    };
+}
 
 #endif //STORM_ENGINE_ITEM_H
