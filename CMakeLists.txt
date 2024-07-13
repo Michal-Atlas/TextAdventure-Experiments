@@ -9,3 +9,5 @@ add_executable(DawnStorm main.cpp game.cpp game.h)
 
 add_dependencies(DawnStorm Storm-Engine)
 target_link_libraries(DawnStorm Storm-Engine)
+
+install(TARGETS DawnStorm)

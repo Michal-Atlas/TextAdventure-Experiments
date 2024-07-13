@@ -4,6 +4,7 @@
 #include <functional>
 #include <vector>
 #include <map>
+#include <string>
 
 namespace DawnStorm {
     class Game;
